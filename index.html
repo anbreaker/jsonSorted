@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jsonSorted</title>
+    <link rel="icon" href="https://fav.farm/⚙️" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>jsonSorted</h1>
+
+      <label for="input-json">Enter your JSON:</label>
+
+      <input type="text" id="input-json" class="input-shadow" />
+
+      <button onclick="sortedJSON()">Sort</button>
+
+      <pre id="result" class="hidden"></pre>
+
+      <p id="error-msg" class="hidden warning">The JSON entered is invalid!</p>
+
+      <footer class="">
+        <a href="https://rootdevs.es/">
+          <img src="./assets/logo.png" alt="Logo" class="h-8" />
+        </a>
+      </footer>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
