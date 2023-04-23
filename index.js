@@ -21,6 +21,7 @@ const sortJSON = (json) => {
 const sortedJSON = () => {
   const inputJSON = document.getElementById('input-json').value;
   const pre = document.getElementById('result');
+  const button = document.getElementById('button-copy');
   const errorMsg = document.getElementById('error-msg');
 
   try {
@@ -29,8 +30,8 @@ const sortedJSON = () => {
     const jsonSorted = JSON.stringify(objSorted, null, 2);
 
     if (jsonSorted) {
-      console.log(jsonSorted);
       pre.classList.remove('hidden');
+      button.classList.remove('hidden');
 
       pre.textContent = jsonSorted;
     }
@@ -38,4 +39,38 @@ const sortedJSON = () => {
     errorMsg.classList.remove('hidden');
     pre.classList.add('hidden');
   }
+};
+
+const copyText = async () => {
+  const copyMsg = document.getElementById('copy-msg');
+  // Selects the contents of the pre
+  const textToCopy = document.getElementById('result').innerText;
+
+  // Creates a temporary textarea item to copy the selected text
+  const temporaryElement = document.createElement('textarea');
+  temporaryElement.value = textToCopy;
+
+  // Adds the temporary element to the document
+  document.body.appendChild(temporaryElement);
+
+  // Selects the contents of the temporary element
+  temporaryElement.select();
+
+  // Copies the contents of the temporary item to the user's clipboard
+  navigator.clipboard
+    .writeText(textToCopy)
+    .then(() => {
+      // Shows a success message to the user
+      copyMsg.classList.remove('hidden');
+
+      setTimeout(() => {
+        copyMsg.classList.add('hidden');
+      }, 1000);
+    })
+    .catch((error) => {
+      console.error('Error when copying text: ', error);
+    });
+
+  //Removes the temporary element from the document
+  document.body.removeChild(temporaryElement);
 };
