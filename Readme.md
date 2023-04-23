@@ -22,6 +22,5 @@ The project uses the following technologies:
 - CSS
 - Vanilla JavaScript
 - JavaScript's JSON.parse() library
-- Contributing
 
 Contributions are welcome. If you want to contribute to the project, you can do so through PR.
