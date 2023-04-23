@@ -21,8 +21,10 @@ const sortJSON = (json) => {
 const sortedJSON = () => {
   const inputJSON = document.getElementById('input-json').value;
   const pre = document.getElementById('result');
-  const button = document.getElementById('button-copy');
+  const buttonCopy = document.getElementById('button-copy');
   const errorMsg = document.getElementById('error-msg');
+
+  errorMsg.classList.add('hidden');
 
   try {
     const obj = JSON.parse(inputJSON);
@@ -31,11 +33,12 @@ const sortedJSON = () => {
 
     if (jsonSorted) {
       pre.classList.remove('hidden');
-      button.classList.remove('hidden');
+      buttonCopy.classList.remove('hidden');
 
       pre.textContent = jsonSorted;
     }
   } catch (error) {
+    buttonCopy.classList.add('hidden');
     errorMsg.classList.remove('hidden');
     pre.classList.add('hidden');
   }
@@ -68,6 +71,7 @@ const copyText = async () => {
       }, 1000);
     })
     .catch((error) => {
+      copyMsg.classList.add('hidden');
       console.error('Error when copying text: ', error);
     });
 
